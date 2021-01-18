@@ -19,9 +19,17 @@ resource "aws_security_group" "web" {
       cidr_blocks = var.CidrBlock_out
     }
   }
-
+  vpc_id = var.vpc
   tags = {
     Name = "${var.tags_common}-security"
+  }
+}
+data "terraform_remote_state" "network" {
+  backend = "s3"
+  config = {
+    bucket = "dulski-remote-state"
+    key    = "dev/Lab2/network/terraform.tfstate"
+    region = "us-east-2"
   }
 }
 

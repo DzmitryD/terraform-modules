@@ -30,3 +30,6 @@ variable "tags_common" {
   default = "dev"
 }
 
+variable "vpc" {
+  default = ""
+}
